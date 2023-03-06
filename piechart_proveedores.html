@@ -1,4 +1,10 @@
-<html><head><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<html><head>
+ <!--Google Font-->
+ <link rel="preconnect" href="https://fonts.gstatic.com">
+ <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+ <!--Stylesheet-->
+ <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script>google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
@@ -7,9 +13,10 @@
     
       var data = google.visualization.arrayToDataTable([
         ['descripcion', 'nombre de provzeedores'],
-        ['proveedors a revisar',     171],
-        ['proveedors revisados en buen estado',     32],
-          ['proveedors revisados en mal estado',     6]
+        ['proveedors a revisar',     159],
+        ['proveedors revisados en buen estado',     41],
+          ['proveedors revisados en mal estado',     9],
+          ['total',1047]
       ]);
     
       var options = {
@@ -22,4 +29,26 @@
     }</script></head>
 <body>
   <a href="index.html"><button type="button" class="btn btn-primary" >informe facturas</button></a>
-     <center> <div id="piechart" style="width: 1024px; height: 768px;"></div></center> </body></html>
+  <h3 align="right"><input type="date" value="2023-03-06" /></h3>
+     <center> <div id="piechart" style="width: 1024px; height: 768px;"></div>
+    
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            
+            <th scope="col">Total de proveedores revisados </th>
+            <th scope="col">porcentage de proveedores revisados</th>
+            <th scope="col">El nombre total de proveedores </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            
+            <td>209</td>
+            <td>16,6%</td>
+            <td>1047</td>
+            
+          </tr>
+        </tbody>
+      </table>
+    </center> </body></html>
