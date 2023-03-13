@@ -13,9 +13,9 @@
     
       var data = google.visualization.arrayToDataTable([
         ['descripcion', 'nombre de facturas'],
-        ['facturas revisadas',     1869],
+        ['facturas revisadas',     2206],
         ['facturas en mal estado',      79],
-        ['facturas a revisar',  1124]
+        ['facturas a revisar',  3618]
       ]);
     
       var options = {
@@ -29,6 +29,26 @@
     <body>
       <a href="piechart_proveedores.html">
         <button type="button" class="btn btn-primary" >informe proveedors</button></a>
-        <h3 align="right"><input type="date" value="2023-03-06" /></h3>
-     <center> <div id="piechart" style="width: 1024px; height: 768px;"></div></center> </body>
+        <h3 align="right"><input type="date" value="2023-03-13" /></h3>
+     <center> <div id="piechart" style="width: 1024px; height: 768px;"></div>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            
+            <th scope="col">Total de facturas revisadas </th>
+            <th scope="col">porcentage de facturas revisadas</th>
+            <th scope="col">El nombre total de facturas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            
+            <td>2285</td>
+            <td>38,7%</td>
+            <td>5903</td>
+            
+          </tr>
+        </tbody>
+      </table>
+    </center> </body>
      </html>
