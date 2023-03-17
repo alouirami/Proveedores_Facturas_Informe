@@ -1,9 +1,9 @@
 <html><head>
- <!--Google Font-->
- <link rel="preconnect" href="https://fonts.gstatic.com">
- <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
- <!--Stylesheet-->
- <link rel="stylesheet" href="style.css">
+  <!--Google Font-->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+  <!--Stylesheet-->
+  <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script>google.charts.load('current', {'packages':['corechart']});
@@ -12,42 +12,86 @@
     function drawChart() {
     
       var data = google.visualization.arrayToDataTable([
-        ['descripcion', 'nombre de provzeedores'],
-        ['proveedors a revisar',     155],
-        ['proveedors revisados en buen estado',     45],
-          ['proveedors revisados en mal estado',     9],
+        ['descripcion', 'nombre de proveedores'],
+        ['proveedores revisados',    56],
+        ['proveedores por revisar',  153]
       ]);
     
-      var options = {
-        title: 'informe facturas'
-      };
+      var colors = [];
+  var colorMap = {
+    'proveedores revisados': '#5cb85c',
+    'proveedores por revisar': '#007bff'
+  }
+  for (var i = 0; i < data.getNumberOfRows(); i++) {
+    colors.push(colorMap[data.getValue(i, 0)]);
+  }
+
+  var options = {
+    title: 'informe proveedores',
+    colors: colors
+  };
+  
     
       var chart = new google.visualization.PieChart(document.getElementById('piechart'));
     
       chart.draw(data, options);
-    }</script></head>
-<body>
-  <a href="index.html"><button type="button" class="btn btn-primary" >informe facturas</button></a>
-  <h3 align="right"><input type="date" value="2023-03-13" /></h3>
-     <center> <div id="piechart" style="width: 1024px; height: 768px;"></div>
-    
-      <table class="table">
-        <thead class="thead-dark">
-          <tr>
-            
-            <th scope="col">Total de proveedores revisados </th>
-            <th scope="col">porcentage de proveedores revisados</th>
-            <th scope="col">El nombre total de proveedores </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            
-            <td>209</td>
-            <td>16,6%</td>
-            <td>1047</td>
-            
-          </tr>
-        </tbody>
-      </table>
-    </center> </body></html>
+    }
+    google.charts.load('current', {'packages':['table']});
+      google.charts.setOnLoadCallback(drawTable);
+
+      function drawTable() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', '');
+        data.addColumn('number', 'proveedores Coregidos');
+        data.addColumn('number', 'proveedores Leidos Correctamente sin tocar le codigo');
+        data.addColumn('number', 'proveedores que imposible leerlos');
+        data.addColumn('number', 'Total de proveedores');
+        data.addRows([
+          ['Numero proveedores',  12,31,10,56],
+          ['Porcentaje',   {v: 21.4, f: '21.4%'}, {v: 55.3, f: '55.3%'},{v: 17.8, f: '17.8%'},null ],
+          
+        ]);
+
+        var table = new google.visualization.Table(document.getElementById('table_div'));
+
+        table.draw(data, {showRowNumber: true, width: '100%', height: '25%'});
+      }
+      google.charts.setOnLoadCallback(drawChart2);
+      function drawChart2() {
+      var data = google.visualization.arrayToDataTable([
+        ["Element", "Density", { role: "style" } ],
+        ["Total de Proveedores", 56, "#6A0DAD"],
+        ["proveedores Coregidos", 12, "#5cb85c"],
+        ["proveedores Leidos Correctamente sin tocar le codigo", 31, "#007bff"],
+        ["proveedores que imposible leerlos", 10, "#fd4d72"],
+        ["proveedores en proceso de revision", 3, "color: gold"]
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        width: 900,
+        height: 400,
+        bar: {groupWidth: "50%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+      chart.draw(view, options);
+  }
+    </script></head>
+    <body>
+      <a  href="index.html">
+        <button type="button" class="btn btn-primary" >informe Facturas</button></a>
+        <h3 align="right"><input type="date" value="2023-03-18" /></h3>
+    <div style="position: fixed;"><div style="left:175px;position: fixed;"><div id="piechart" style="width: 788px; height: 591px; left:-70px;position: relative;"></div>
+    <div id="columnchart_values" style="width: 900px; height: 300px; left:590px;top:-500px;position: relative;"></div></div>
+    <div id="table_div" style="width: 1000px; height: 591px; right:-325px;top:488px;position: relative;"></div></div>
+      
+    </body>
+     </html>

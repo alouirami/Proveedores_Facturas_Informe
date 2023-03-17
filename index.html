@@ -13,42 +13,85 @@
     
       var data = google.visualization.arrayToDataTable([
         ['descripcion', 'nombre de facturas'],
-        ['facturas revisadas',     2227],
-        ['facturas en mal estado',      79],
-        ['facturas a revisar',  3597]
+        ['facturas revisadas',    2352],
+        ['facturas por revisar',  3584]
       ]);
     
-      var options = {
-        title: 'informe facturas'
-      };
+      var colors = [];
+  var colorMap = {
+    'facturas revisadas': '#5cb85c',
+    'facturas por revisar': '#007bff'
+  }
+  for (var i = 0; i < data.getNumberOfRows(); i++) {
+    colors.push(colorMap[data.getValue(i, 0)]);
+  }
+
+  var options = {
+    title: 'informe facturas',
+    colors: colors
+  };
+  
     
       var chart = new google.visualization.PieChart(document.getElementById('piechart'));
     
       chart.draw(data, options);
-    }</script></head>
+    }
+    google.charts.load('current', {'packages':['table']});
+      google.charts.setOnLoadCallback(drawTable);
+
+      function drawTable() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', '');
+        data.addColumn('number', 'Facturas Coregidas');
+        data.addColumn('number', 'Facturas Leidas Correctamente sin tocar le codigo');
+        data.addColumn('number', 'Facturas que imposible leerlas');
+        data.addColumn('number', 'Total de Facturas');
+        data.addRows([
+          ['Numero Facturas',  484,1757,102,2343 ],
+          ['Porcentaje',   {v: 21, f: '21%'}, {v: 75, f: '75%'},{v: 4, f: '4%'},null ],
+          
+        ]);
+
+        var table = new google.visualization.Table(document.getElementById('table_div'));
+
+        table.draw(data, {showRowNumber: true, width: '100%', height: '25%'});
+      }
+      google.charts.setOnLoadCallback(drawChart2);
+      function drawChart2() {
+      var data = google.visualization.arrayToDataTable([
+        ["Element", "Density", { role: "style" } ],
+        ["Total de Facturas", 2352, "#6A0DAD"],
+        ["Facturas Coregidas", 484, "#5cb85c"],
+        ["Facturas Leidas Correctamente sin tocar le codigo", 1757, "#007bff"],
+        ["Facturas que imposible leerlas", 102, "#fd4d72"],
+        ["Facturas en proceso de revision", 9, "color: gold"]
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        width: 850,
+        height: 400,
+        bar: {groupWidth: "50%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+      chart.draw(view, options);
+  }
+    </script></head>
     <body>
-      <a href="piechart_proveedores.html">
+      <a  href="piechart_proveedores.html">
         <button type="button" class="btn btn-primary" >informe proveedors</button></a>
-        <h3 align="right"><input type="date" value="2023-03-13" /></h3>
-     <center> <div id="piechart" style="width: 1024px; height: 768px;"></div>
-      <table class="table">
-        <thead class="thead-dark">
-          <tr>
-            
-            <th scope="col">Total de facturas revisadas </th>
-            <th scope="col">porcentage de facturas revisadas</th>
-            <th scope="col">El nombre total de facturas</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            
-            <td>2306</td>
-            <td>39%</td>
-            <td>5903</td>
-            
-          </tr>
-        </tbody>
-      </table>
-    </center> </body>
+        <h3 align="right"><input type="date" value="2023-03-18" /></h3>
+    <div style="position: fixed;"><div style="left:175px;position: fixed;"><div id="piechart" style="width: 788px; height: 591px; left:-70px;position: relative;"></div>
+    <div id="columnchart_values" style="width: 900px; height: 300px; left:619px;top:-500px;position: relative;"></div></div>
+    <div id="table_div" style="width: 888px; height: 591px; right:-325px;top:488px;position: relative;"></div></div>
+      
+    </body>
      </html>
