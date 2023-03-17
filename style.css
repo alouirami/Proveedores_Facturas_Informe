@@ -5,12 +5,13 @@
     margin: 0;
     box-sizing: border-box;
 }
-input[type="date"]{
+p{
     background-color: #fd4d72;
-    padding: 15px;
-    transform: translate(-50%,-50%);
-    top: 50%;
-    left: 50%;
+    right: 35px;
+    top:15px;
+    padding: 11px;
+    position: fixed;
+    width: 130px;
     font-family: "Roboto Mono",monospace;
     color: #ffffff;
     font-size: 18px;

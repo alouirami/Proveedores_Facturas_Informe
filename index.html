@@ -88,7 +88,11 @@
     <body>
       <a  href="piechart_proveedores.html">
         <button type="button" class="btn btn-primary" >informe proveedors</button></a>
-        <h3 align="right"><input type="date" value="2023-03-18" /></h3>
+        <h3 align="right">
+          <p>
+            <script> document.write(new Date().toLocaleDateString()); </script>
+            </p>
+        </h3>
     <div style="position: fixed;"><div style="left:175px;position: fixed;"><div id="piechart" style="width: 788px; height: 591px; left:-70px;position: relative;"></div>
     <div id="columnchart_values" style="width: 900px; height: 300px; left:619px;top:-500px;position: relative;"></div></div>
     <div id="table_div" style="width: 888px; height: 591px; right:-325px;top:488px;position: relative;"></div></div>
