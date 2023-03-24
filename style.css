@@ -25,3 +25,25 @@ p{
     cursor: pointer;
     border-radius: 3px;
 }
+.oddTableRow {
+    background-color:rgb(232, 246, 247);
+    text-align: center;
+}
+
+.tableRow { background-color:rgb(246, 253, 253); 
+    text-align: center;
+    
+}
+
+.headerCell{
+    width: 5px; 
+}
+.headerRow{
+    font-size: 11px;
+    text-align: center;
+} 
+
+tr:hover {background-color: rgba(233, 235, 154, 0.76) !important;}
+.selectedTableRow {
+    background-color: rgba(141, 186, 238, 0.76) !important;
+}

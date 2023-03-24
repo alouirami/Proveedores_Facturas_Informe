@@ -13,21 +13,30 @@
     
       var data = google.visualization.arrayToDataTable([
         ['descripcion', 'nombre de facturas'],
-        ['facturas revisadas',    2352],
-        ['facturas por revisar',  3584]
+        ['Facturas Revisadas',    2623],
+        ['Facturas Por Revisar',  3304],
       ]);
     
       var colors = [];
   var colorMap = {
-    'facturas revisadas': '#5cb85c',
-    'facturas por revisar': '#007bff'
+    'Facturas Revisadas': '#5cb85c',
+    'Facturas Por Revisar': '#007bff'
   }
   for (var i = 0; i < data.getNumberOfRows(); i++) {
     colors.push(colorMap[data.getValue(i, 0)]);
   }
 
   var options = {
-    title: 'informe facturas',
+    title: 'TOTAL FACTURAS: 5927',
+    titleTextStyle: {
+    
+                fontSize: 25,
+                fontName: 'Times New Roman',            
+                
+            },
+    legend: { position: 'bottom', alignment: 'start' },
+    width:500,
+    height:500,
     colors: colors
   };
   
@@ -42,29 +51,46 @@
       function drawTable() {
         var data = new google.visualization.DataTable();
         data.addColumn('string', '');
-        data.addColumn('number', 'Facturas Coregidas');
-        data.addColumn('number', 'Facturas Leidas Correctamente sin tocar le codigo');
-        data.addColumn('number', 'Facturas que imposible leerlas');
+        data.addColumn('number', 'Lectura Mejorada');
+        data.addColumn('number', 'Facturas Leidas Correctamente Por el OCR');
+        data.addColumn('number', 'Imposible Lectura Por el OCR');
         data.addColumn('number', 'Total de Facturas');
         data.addRows([
-          ['Numero Facturas',  484,1757,102,2343 ],
-          ['Porcentaje',   {v: 21, f: '21%'}, {v: 75, f: '75%'},{v: 4, f: '4%'},null ],
+          ['Numero Facturas',  638,1872,105,2623 ],
+          ['Porcentaje',   {v: 21, f: '24%'}, {v: 75, f: '71%'},{v: 4, f: '0,03%'},null ],
           
         ]);
 
         var table = new google.visualization.Table(document.getElementById('table_div'));
+        var options = 
+  {
+    allowHtml: true, 
+    showRowNumber: false, 
+    width: '100%', 
+    height: '25%',
+    cssClassNames: { 
+      headerRow: 'headerRow',
+      tableRow: 'tableRow',
+      oddTableRow: 'oddTableRow',
+      selectedTableRow: 'selectedTableRow',
+      // hoverTableRow: 'hoverTableRow',
+      headerCell: 'headerCell',
+      tableCell: 'tableCell',
+      rowNumberCell: 'rowNumberCell'
+    }    
 
-        table.draw(data, {showRowNumber: true, width: '100%', height: '25%'});
+  };
+        table.draw(data, options);
       }
       google.charts.setOnLoadCallback(drawChart2);
       function drawChart2() {
       var data = google.visualization.arrayToDataTable([
         ["Element", "Density", { role: "style" } ],
-        ["Total de Facturas", 2352, "#6A0DAD"],
-        ["Facturas Coregidas", 484, "#5cb85c"],
-        ["Facturas Leidas Correctamente sin tocar le codigo", 1757, "#007bff"],
-        ["Facturas que imposible leerlas", 102, "#fd4d72"],
-        ["Facturas en proceso de revision", 9, "color: gold"]
+        ["Total de Facturas", 2623, "#6A0DAD"],
+        ["Lectura Mejorada", 638, "#5cb85c"],
+        ["Facturas Leidas Correctamente Por el OCR", 1872, "#007bff"],
+        ["Imposible Lectura Por el OCR", 105, "#fd4d72"],
+        ["Facturas en proceso de revisión", 8, "color: gold"]
       ]);
 
       var view = new google.visualization.DataView(data);
@@ -76,6 +102,13 @@
                        2]);
 
       var options = {
+        title: 'FACTURAS REVISADAS',
+    titleTextStyle: {
+    
+                fontSize: 25,
+                fontName: 'Times New Roman',           
+                
+            },
         width: 850,
         height: 400,
         bar: {groupWidth: "50%"},
@@ -93,9 +126,14 @@
             <script> document.write(new Date().toLocaleDateString()); </script>
             </p>
         </h3>
+        <center>
+          <h1 style="font-family: Times New Roman, Times, serif; font-weight: bold; color: #5cb85c;">
+            INFORME FACTURAS
+          </h1>
+        </center>
     <div style="position: fixed;"><div style="left:175px;position: fixed;"><div id="piechart" style="width: 788px; height: 591px; left:-70px;position: relative;"></div>
-    <div id="columnchart_values" style="width: 900px; height: 300px; left:619px;top:-500px;position: relative;"></div></div>
-    <div id="table_div" style="width: 888px; height: 591px; right:-325px;top:488px;position: relative;"></div></div>
+    <div id="columnchart_values" style="width: 900px; height: 300px; left:619px;top:-565px;position: relative;"></div></div>
+    <div id="table_div" style="width: 888px; height: 591px; left:619px;top:488px;position: relative;"></div></div>
       
     </body>
      </html>
