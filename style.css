@@ -1,0 +1,49 @@
+*,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+p{
+    background-color: #fd4d72;
+    right: 35px;
+    top:15px;
+    padding: 11px;
+    position: fixed;
+    width: 130px;
+    font-family: "Roboto Mono",monospace;
+    color: #ffffff;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+::-webkit-calendar-picker-indicator{
+    background-color: #ffffff;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+.oddTableRow {
+    background-color:rgb(232, 246, 247);
+    text-align: center;
+}
+
+.tableRow { background-color:rgb(246, 253, 253); 
+    text-align: center;
+    
+}
+
+.headerCell{
+    width: 5px; 
+}
+.headerRow{
+    font-size: 11px;
+    text-align: center;
+} 
+
+tr:hover {background-color: rgba(233, 235, 154, 0.76) !important;}
+.selectedTableRow {
+    background-color: rgba(141, 186, 238, 0.76) !important;
+}
